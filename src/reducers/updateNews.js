@@ -1,7 +1,8 @@
-import { ADD_NEWS, REMOVE_NEWS } from '../constants';
+import { ADD_NEWS, REMOVE_NEWS, SELECT_NEWS } from '../constants';
 
 const defaultState = {
   items: [],
+  selectNews: null
 }
 
 export const updateNews = (state = defaultState, action) => {
@@ -11,6 +12,8 @@ export const updateNews = (state = defaultState, action) => {
       return {...state, items: [...state.items, action.payload]};
     case REMOVE_NEWS:
       return {...state, items: []};
+    case SELECT_NEWS:
+      return {...state, selectNews: action.payload};
     default:
     return {...state};
   }

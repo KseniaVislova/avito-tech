@@ -1,6 +1,6 @@
 import {useDispatch, useSelector} from 'react-redux';
 import { fetchNews } from '../asyncActions/fetchNews';
-import { removeNews } from '../actions/updateNews';
+import { removeNews, selectNews } from '../actions/updateNews';
 import dateFormat from "dateformat";
 import { useEffect, useState } from 'react';
 import { ListGroup, ListGroupItem, Card, Row, Col, Spinner } from 'react-bootstrap';
@@ -11,8 +11,11 @@ const NewsList = () => {
   const news = useSelector(state => state.news.items);
   const [count, setCount] = useState(0);
 
-  console.log(count)
-  console.log(news);
+  const goToNews = (id) => {
+    const newItems = news.filter((item) => item.id === id);
+    console.log(newItems)
+    dispatch(selectNews(newItems[0]));
+  }
 
   useEffect(() => {
     setTimeout(() => {
@@ -30,7 +33,7 @@ const NewsList = () => {
       {news.length > 0 ? 
         <ListGroup variant="flush">
             {news.map(item => {
-              return <ListGroupItem key={item.id}>
+              return <ListGroupItem key={item.id} onClick={()=>{goToNews(item.id)}}>
                 <Link to="/test" className="text-decoration-none">
                   <Card bg="success" text="white">
                     <Card.Header>{item.title}</Card.Header>

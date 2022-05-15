@@ -1,5 +1,6 @@
 export const ADD_NEWS = 'ADD_NEWS';
 export const REMOVE_NEWS = 'REMOVE_NEWS';
+export const SELECT_NEWS = 'SELECT_NEWS';
 
 export const URL = 'https://hacker-news.firebaseio.com/v0/';
 export const NEWSTORIES = 'newstories.json';
