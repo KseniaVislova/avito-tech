@@ -11,6 +11,8 @@ const NewsList = () => {
   const news = useSelector(state => state.news.items);
   const [count, setCount] = useState(0);
 
+  news.sort((prev, next) => next.time - prev.time);
+
   const goToNews = (id) => {
     const newItems = news.filter((item) => item.id === id);
     console.log(newItems)
